@@ -24,3 +24,10 @@ For this project you will use `Test Driven Development` to create a RESTful API 
 3.  Write a minimum of two tests per route handler.
 4.  Add tests to verify that the endpoints return the correct HTTP status codes.
 5.  Write the **tests BEFORE** writing the route handlers.
+
+#### Personal stretch: Routes added
+- get all resources
+- get single resource
+- update single resource
+
+and of course **add new resource** and **delete a resource**
