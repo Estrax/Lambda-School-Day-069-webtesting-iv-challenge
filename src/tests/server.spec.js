@@ -19,10 +19,19 @@ describe('----- Server -----', () => {
                 expect(response.type).toBe(/json/i);
             });
 
-            it('should get the appropriate response object', async () => {
+            it('should get the empty response object', async () => {
                 const response = await request(api).get('/resources');
                 expect(response.body).toEqual([]);
             });
+
+            it('should get the appropriate response object', async () => {
+                await request(api).post('/resources', {
+                    name: 'resource name'
+                });
+                const response = await request(api).get('/resources');
+                expect(response.body).toEqual([{ id: 1, name: 'resource name' }]);
+
+            })
         });
 
         describe('POST', () => {
