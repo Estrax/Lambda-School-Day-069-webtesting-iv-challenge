@@ -106,17 +106,24 @@ describe('----- Server -----', () => {
                     name: 'resource name'
                 });
                 const response = await request(api).put('/resources/1').send({
-                    name: 'resouce name 2'
+                    name: 'resource name 2'
                 });
                 expect(response.status).toBe(200);
             });
 
-            it('should get a response status code 500 on failure', async () => {
+            it('should get a response status code 400 on failure', async () => {
                 await request(api).post('/resources').send({
                     name: 'resource name'
                 });
                 const response = await request(api).put('/resources/1').send({ });
-                expect(response.status).toBe(500);
+                expect(response.status).toBe(400);
+            });
+
+            it('should get a response status code 404 on failure', async () => {
+                const response = await request(api).put('/resources/1').send({
+                    name: 'resource name 2'
+                });
+                expect(response.status).toBe(404);
             });
 
             it('should respond with JSON', async () => {
@@ -124,7 +131,7 @@ describe('----- Server -----', () => {
                     name: 'resource name'
                 });
                 const response = await request(api).put('/resources/1').send({
-                    name: 'resouce name 2'
+                    name: 'resource name 2'
                 });
                 expect(response.type).toBe('application/json');
             });
@@ -134,7 +141,7 @@ describe('----- Server -----', () => {
                     name: 'resource name'
                 });
                 const response = await request(api).put('/resources/1').send({
-                    name: 'resouce name 2'
+                    name: 'resource name 2'
                 });
                 expect(response.body).toEqual(1);
             });

@@ -22,17 +22,17 @@ router.route('/:id')
         await db
                 .getById(req.params.id)
                 .then(
-                    resource => resource.length === 0
+                    resource => (resource.length === 0 || resource === 0)
                     ? res.status(404).json({ message: "The resource with the specified ID does not exist." })
                     : res.status(200).json(resource)
                 )
                 .catch(err => res.status(500).json({ error: "Resource could not be retrieved."}));
     })
     .put(async (req, res) => {
-        if(!req.body.name || req.body.name.length === 0) return res.status(500).json({ error: "Resource could not be updated."});
+        if(!req.body.name || req.body.name.length === 0) return res.status(400).json({ error: "Resource could not be updated."});
         await db.update(req.params.id, req.body)
             .then(
-                resource => resource.length === 0
+                resource => (resource.length === 0 || resource === 0)
                 ? res.status(404).json({ message: "The resource with the specified ID does not exist." })
                 : res.status(200).json(resource)
             )
