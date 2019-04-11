@@ -13,3 +13,5 @@ app.listen(port, (err) => {
     if(err) throw err;
     console.log(`Server running on ${hostname}:${port}`);
 });
+
+module.exports = app;
