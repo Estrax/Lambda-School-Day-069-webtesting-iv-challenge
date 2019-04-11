@@ -1,5 +1,6 @@
 const resources = require('../database/helpers/resourceHelpers');
 const request = require('supertest');
+const db = require('../database/dbConfig');
 
 afterEach(async () => {
     await db('resources').truncate();
