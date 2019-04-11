@@ -17,9 +17,7 @@ async function get(){
 async function insert(resource){
     return await db('resources')
             .insert(resource)
-            .then(res => {
-                id: res[0].id
-            });
+            .then(res => res[0]);
 }
 
 async function getById(id){

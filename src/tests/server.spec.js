@@ -139,9 +139,7 @@ describe('----- Server -----', () => {
                 const response = request(api).put('/resources/1', {
                     name: 'resouce name 2'
                 });
-                expect(response.body).toEqual({
-                    name: 'resource name 2'
-                });
+                expect(response.body).toEqual(1);
             });
         });
 

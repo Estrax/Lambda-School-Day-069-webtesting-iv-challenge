@@ -16,14 +16,14 @@ describe('----- RESOURCE MODEL -----', () => {
 
     describe('INSERT', async () => {
         it('should insert a new resource on success', async () => {
-            const response = await resources.insert({ name: 'resource name' });
-            expect(response).toEqual({ id: 1 });
+            const response = await resources.insert({ id: 1, name: 'resource name' });
+            expect(response).toEqual(1);
         });
     });
 
     describe('GET WITH ID', async () => {
         it('should get a resource with ID on success', async () => {
-            await resources.insert({ name: 'resource name' });
+            await resources.insert({ id: 1, name: 'resource name' });
             const response = await resources.getById(1);
             expect(response).toEqual({ id: 1, name: 'resource name' });
         });
@@ -33,7 +33,9 @@ describe('----- RESOURCE MODEL -----', () => {
         it('should update a resource with ID on success', async () => {
             await resources.insert({ name: 'resource name' });
             const response = await resources.update(1, { name: 'resource name 2' });
-            expect(response).toEqual({ id: 1, name: 'resource name 2' });
+            expect(response).toEqual(1);
+            const response2 = await resources.getById(1);
+            expect(response2).toEqual({ id: 1, name: 'resource name 2' });
         });
     });
 
