@@ -25,7 +25,7 @@ For this project you will use `Test Driven Development` to create a RESTful API 
 4.  Add tests to verify that the endpoints return the correct HTTP status codes.
 5.  Write the **tests BEFORE** writing the route handlers.
 
-#### Personal stretch: Routes added
+#### Personal stretch: Routes added (out of the specs):
 - get all resources
 - get single resource
 - update single resource
