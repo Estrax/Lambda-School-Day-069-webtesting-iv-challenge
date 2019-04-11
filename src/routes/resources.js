@@ -14,7 +14,7 @@ router.route('/')
         if(!req.body.name) return res.status(400).json({ error: "Please provide the name for the resource." });
         await db
                 .insert(req.body)
-                .then(id => res.status(201).json({ id }))
+                .then(statusCode => res.status(201).json(statusCode))
                 .catch(err => res.status(500).json({ error: "There was an error while saving the resource to the database."}));
     });
 

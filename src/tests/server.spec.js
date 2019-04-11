@@ -60,9 +60,7 @@ describe('----- Server -----', () => {
                 const response = await request(api).post('/resources', {
                     name: 'resource name'
                 });
-                expect(response.body).toEqual({
-                    id: 1
-                });
+                expect(response.body).toEqual(1);
             });
         });
     });
