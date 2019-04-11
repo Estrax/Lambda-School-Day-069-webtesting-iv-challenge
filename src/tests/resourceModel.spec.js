@@ -16,14 +16,14 @@ describe('----- RESOURCE MODEL -----', () => {
 
     describe('INSERT', async () => {
         it('should insert a new resource on success', async () => {
-            const response = await resources.post({ name: 'resource name' });
+            const response = await resources.insert({ name: 'resource name' });
             expect(response).toEqual({ id: 1 });
         });
     });
 
     describe('GET WITH ID', async () => {
         it('should get a resource with ID on success', async () => {
-            await resources.post({ name: 'resource name' });
+            await resources.insert({ name: 'resource name' });
             const response = await resources.getById(1);
             expect(response).toEqual({ id: 1, name: 'resource name' });
         });
@@ -31,7 +31,7 @@ describe('----- RESOURCE MODEL -----', () => {
 
     describe('UPDATE', async () => {
         it('should update a resource with ID on success', async () => {
-            await resources.post({ name: 'resource name' });
+            await resources.insert({ name: 'resource name' });
             const response = await resources.update(1, { name: 'resource name 2' });
             expect(response).toEqual({ id: 1, name: 'resource name 2' });
         });
@@ -39,7 +39,7 @@ describe('----- RESOURCE MODEL -----', () => {
 
     describe('REMOVE', async () => {
         it('should remove a resource with ID on success', async () => {
-            await resources.post({ name: 'resource name' });
+            await resources.insert({ name: 'resource name' });
             const response = await resources.remove(1);
             expect(response).toEqual(1);
         });
